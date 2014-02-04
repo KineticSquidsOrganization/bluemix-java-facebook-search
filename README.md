@@ -7,6 +7,13 @@ This is a Java app that uses the following cloud services:
 - Company Text Analytics Service
 - Name Text Analytics Service
 
+## License ##
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
 ## Prerequisites ##
 
 Before we begin, we first need to install the command line tool that will be used to upload and manage your application. Cloud Foundry uses a tool called [**cf**](https://github.com/cloudfoundry/cf). This tool is written in Ruby, so you must have Ruby installed. If you are running on Windows, you can install Ruby from [this](http://rubyinstaller.org/downloads/) website. 
@@ -23,13 +30,35 @@ Once Ruby is installed, cf can be installed by using the **gem install** command
         
 ## Download the App ##
 
-The source for this app is at GitHub so, for example, if you are using the command line you can clone the repository like this:
+This example's home is at JazzHub and its is at GitHub. 
+
+From the project's home at JazzHub, you can fork the repo and get your own copy of the code in a JazzHub project by clicking on "Code" and then "Fork".
+
+![image](images/forkProject.png)
+
+If you are more comfortable using the command line you can clone the repository like this:
 
 	git clone https://github.com/ibmjstart/bluemix-java-facebook-search.git
 		
-If you want to use Eclipse to work on it, there are two ways you can get the source into Eclipse:
+If you want to use Eclipse as your IDE, there are two ways you can get the source into Eclipse:
 
-1. Import the Eclipse project by following these instructions:
+1. Use Eclipse with a forked project at JazzHub by following these instructions:
+	1. Start by forking the repository, as described above
+	2. Open Eclipse, be sure you have the [eGit plus-ins] (http://marketplace.eclipse.org/content/egit-git-team-provider#.Uu_cPyQ1ewE).
+	3. Open the "Git Repository Exploring" perspective and select to clone a Git repository.
+	
+	![image](images/EclipseClone.png)
+	
+	4. Enter the repository URL
+	
+		https://github.com/ibmjstart/bluemix-java-facebook-search.git
+		
+	5. Take the defaults to clone the master branch.
+	
+	![image](images/EclipseGitProject.png)
+	
+
+2. Import the Eclipse project by following these instructions:
 	1. Start by cloning the repository, as described above
 	2. Open Eclipse
 	3. Select File->Import
@@ -37,14 +66,6 @@ If you want to use Eclipse to work on it, there are two ways you can get the sou
 	5. Click "Browse" next to the first text field, and navigate to the cloned repository and find the folder labeled "app" and click ok.
 	6. Under Projects you should now see a project called "FacebookSearch", make sure the checkbox next to the "FacebookSearch" project is checked and then click Finish
 	7. You should now see the "FacebookSearch" project in your list of projects in Eclipse.
-
-2. Import the WAR File
-	1. Navigate to https://github.com/ibmjstart/bluemix-java-facebook-search/releases
-	2. Click the green button labeled "FacebookSearch.war" and that will download the WAR file.
-	3. Open Eclipse
-	4. Then File->Import
-	5. Scroll down to the "Web" section, expand that section and click WAR File then click Next.
-	6. Click next and then Finish and the project should be imported into Eclipse
 
 ## External and Public APIs ###
 
@@ -62,7 +83,9 @@ The graph is generated using the Chart.js library, which is under MIT license. T
 
 ## Deploying the App ##
 
-Once you have included the Facebook App ID and App Secret as shown above, you are all set to deploy the app. In the terminal, go in the directory of the app. The application is wrapped in a WAR file. You can directly deploy/push the WAR file using push command:
+Once you have included the Facebook App ID and App Secret as shown above, you are all set to deploy the app. 
+
+In the terminal, go in the directory of the app. The application is wrapped in a WAR file. You can directly deploy/push the WAR file using push command:
 
 	cf push
 
@@ -72,13 +95,22 @@ Just follow the instructions on the screen. You can select the default settings 
 
 For the app to function correctly, you must create the service instance and bind the service instance while deploying the app. The **cf push** command will ask, "Create services for application?" Answer yes, then you will be presented with a list of services. Choose Company Text analytics service and Names Text Analytics Service from this list. Below, you can see some screenshots of what this should look like when deploying from the command line.
 
-
 Here are some snapshots of how to deploy the app and create services required for the app: 
     
 (These are to be added)
 
-After the application is deployed using **cf push**, you can check the status of the app using the following command: **cf apps**. If the status is RUNNING, you can hit the URL in the browser and see the application is running.
+## Using JazzHub to deploy your app ##
 
+Once you've bound your service instance to the app, and if you're working from JazzHub, you can continue to deploy changes to your app directly from JazzHub using the "Launch" link. Strictly speaking, you don't have to bind your service instance to your app to deploy it, though once deployed without the service instance, it may not behave correctly.
+
+![image](images/Launch.png)
+
+
+After the application is deployed using, you can check the status of the app using the following command: **cf apps**. If the status is RUNNING, you can hit the URL in the browser and see the application is running.
+
+You can also check status by following the "Manage" link for the app at JazzHub.
+
+![image](images/Manage.png)
 
 ## Troubleshooting ##
 
